@@ -3,10 +3,10 @@ title = "Extract slice data"
 datapath = "/projects/co2snow/eyoo/PeleC/Exec/RegTests/EB-CA/TE_rotor_submodule/figures"
 outpath = "/projects/co2snow/eyoo/PeleC/Exec/RegTests/EB-CA/TE_rotor_submodule/figures"
 
-name = "x_slice"
+name = "z_slice"
 
 SI = false
 rm_eb = false
 
-normal = "x"
+normal = "z"
 location = "[0, 0, 0]"
