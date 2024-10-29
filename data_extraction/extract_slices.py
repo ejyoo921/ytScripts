@@ -83,7 +83,7 @@ def main():
     islice = np.linspace(0, 101, 1)
 
     # Loop over the plt files in the data directory
-    # yt.enable_parallelism()
+    yt.enable_parallelism()
     for ds in tqdm(ts.piter(dynamic=True)):
 
         if args["field"]:
