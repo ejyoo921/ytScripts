@@ -10,6 +10,8 @@ sys.path.append(os.path.abspath(os.path.join(sys.argv[0], "../../")))
 import ytscripts.utilities as utils  # noqa: E402
 import ytscripts.ytargs as ytargs  # noqa: E402
 
+# VD: Print only warnings and errors
+yt.utilities.logger.set_log_level("warning")
 
 def get_parser():
     """Get the parser."""
@@ -73,7 +75,10 @@ def main():
     )
 
     # Create the slice array and find indices closest to value
-    islice = np.linspace(args["min"], args["max"], args["num_slices"])
+    # EY: The following line has a problem. args["min"] should be integer, not str
+    # islice = np.linspace(args["min"], args["max"], args["num_slices"])
+    # max should be (in general) # of plots: 101 is for TE_rotor on Kestrel (10/29/24)
+    islice = np.linspace(0, 101, 1)
 
     # Loop over the plt files in the data directory
     yt.enable_parallelism()

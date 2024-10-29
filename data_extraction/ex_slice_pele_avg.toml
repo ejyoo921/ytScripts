@@ -1,0 +1,12 @@
+title = "Example to extract average data"
+
+datapath = "../figures_sample/"
+outpath = "../figures_sample/"
+
+name = "averages"
+
+SI = false
+rm_eb = false
+
+normal = 0
+location = "[0, 0, 0]"

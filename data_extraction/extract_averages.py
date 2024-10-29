@@ -122,7 +122,7 @@ def main():
 
         # Loop over the specified variables
         tmp_data = {}
-        for field in args["fields"]:
+        for field in [args["fields"]]:
             tmp_data[field] = data.mean(
                 ("boxlib", field), weight=("boxlib", "cell_volume")
             )

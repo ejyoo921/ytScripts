@@ -136,3 +136,10 @@ outdata
 
 # vscode
 .vscode/
+
+# EY extra
+**/figures_sample/*png
+**/figures_sample/*mp4
+**/figures_sample/plt*
+**/figures_sample/*npz
+**/figures_sample/*pkl
