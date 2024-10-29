@@ -5,6 +5,8 @@ import sys
 
 import numpy as np
 import yt
+# this is to see the prograss
+from tqdm import tqdm
 
 sys.path.append(os.path.abspath(os.path.join(sys.argv[0], "../../")))
 import ytscripts.utilities as utils  # noqa: E402
@@ -82,7 +84,7 @@ def main():
 
     # Loop over the plt files in the data directory
     # yt.enable_parallelism()
-    for ds in ts.piter(dynamic=True):
+    for ds in tqdm(ts.piter(dynamic=True)):
 
         if args["field"]:
             vis_field = args["field"]
