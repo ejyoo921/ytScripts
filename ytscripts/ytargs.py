@@ -368,17 +368,20 @@ class ytExtractArgs(ytArgs):
         args = {
             "min": {
                 "type": float,
-                "required": True,
+                "required": False,
+                "default": None,
                 "help": "Index of the first slice to extract in the normal direction.",
             },
             "max": {
                 "type": float,
-                "required": True,
+                "required": False,
+                "default": None,
                 "help": "Index of the last slice to extract in the normal direction.",
             },
             "num_slices": {
                 "type": int,
-                "required": True,
+                "required": False,
+                "default": None,
                 "help": "Number of slices to extract in normal direction.",
             },
             "gradient": {
@@ -467,7 +470,7 @@ class ytExtractArgs(ytArgs):
             "fields": {
                 "type": str,
                 "nargs": "+",
-                "required": True,
+                "required": False,
                 "default": None,
                 "help": "Names of the data fields to extract.",
             },
@@ -545,14 +548,14 @@ class ytPlotArgs(ytArgs):
             "fields": {
                 "type": str,
                 "nargs": "+",
-                "required": True,
+                "required": False,
                 "default": None,
                 "help": "Names of the data fields to plot.",
             },
             "fname": {
                 "type": str,
                 "nargs": "+",
-                "required": True,
+                "required": False,
                 "default": "average_data",
                 "help": "Name of the data file to load and plot (.pkl).",
             },
@@ -576,7 +579,7 @@ class ytPlotArgs(ytArgs):
         args = {
             "fname": {
                 "type": str,
-                "required": True,
+                "required": False,
                 "default": "grid_info",
                 "help": "Name of the data file to load and plot (.pkl).",
             },
