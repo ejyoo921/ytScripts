@@ -181,7 +181,8 @@ def main():
             sys.exit("joint pbox and contour options are currently broken...")
 
     # Loop over all datasets in the time series
-    yt.enable_parallelism()
+    if not args["no_mpi"]:
+        yt.enable_parallelism()
     for ds in ts.piter(dynamic=True):
         if (
             hasattr(ds.fields.boxlib, "velocityx")

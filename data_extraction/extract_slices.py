@@ -76,7 +76,8 @@ def main():
     islice = np.linspace(args["min"], args["max"], args["num_slices"])
 
     # Loop over the plt files in the data directory
-    yt.enable_parallelism()
+    if not args["no_mpi"]:
+        yt.enable_parallelism()
     for ds in ts.piter(dynamic=True):
 
         if args["field"]:
