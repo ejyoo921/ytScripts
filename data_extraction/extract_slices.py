@@ -73,7 +73,9 @@ def main():
     )
 
     # Create the slice array and find indices closest to value
-    islice = np.linspace(args["min"], args["max"], args["num_slices"])
+    islice = np.linspace(
+        float(args["min"]), float(args["max"]), int(args["num_slices"])
+    )
 
     # Loop over the plt files in the data directory
     if not args["no_mpi"]:
