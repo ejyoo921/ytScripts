@@ -47,6 +47,7 @@ def main():
         # script.main(script_args)
 
         script_path = os.path.join(os.path.dirname(__file__), f"{args.script}.py")
+
         try:
             subprocess.run(["python", script_path] + script_args, check=True)
         except subprocess.CalledProcessError:

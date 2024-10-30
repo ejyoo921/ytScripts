@@ -41,6 +41,10 @@ class ytArgs:
 
     def override_args(self, init_args, input_file):
         """Override CLI arguments with those from input file."""
+
+        # Arguments that should always be treated as lists
+        list_args = {"clw"}  # contour line width list that must match contour length
+
         if input_file:
             with open(input_file, "rb") as f:
                 input_options = tomllib.load(f)
@@ -55,15 +59,35 @@ class ytArgs:
                 sys_args = sys.argv
 
             # Update any manually specified arguments
-            for indx, iarg in enumerate(sys_args):
-                if "-" in iarg[0]:
-                    user_arg = iarg.replace("-", "")
+            indx = 0
+            while indx < len(sys_args):
+                iarg = sys_args[indx]
 
-                    # Check to see if arg is a flag
-                    if type(args[user_arg]) is bool:
+                if iarg.startswith("-"):
+                    user_arg = iarg.lstrip("-")
+                    values = []
+
+                    # Check if it's a boolean flag or has associated values
+                    if type(args.get(user_arg, None)) is bool:
                         args = deep_update(args, {user_arg: True})
+                        indx += 1
                     else:
-                        args = deep_update(args, {user_arg: sys_args[indx + 1]})
+                        indx += 1
+                        # Collect all following values until next flag
+                        while indx < len(sys_args) and not sys_args[indx].startswith(
+                            "-"
+                        ):
+                            values.append(sys_args[indx])
+                            indx += 1
+
+                        # Determine if the argument should be a single value or list
+                        if user_arg in list_args or len(values) > 1:
+                            args = deep_update(args, {user_arg: values})
+                        else:
+                            args = deep_update(args, {user_arg: values[0]})
+                else:
+                    indx += 1
+
         else:
             args = vars(init_args)
 
@@ -270,7 +294,9 @@ class ytVisArgs(ytArgs):
                 "nargs": "+",
                 "required": False,
                 "default": None,
-                "help": "Name of contour field and value to plot on top of slice.",
+                "help": (
+                    "Name of contour field, value, and color to plot on top of slice."
+                ),
             },
             "clw": {
                 "type": float,

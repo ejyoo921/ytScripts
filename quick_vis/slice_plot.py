@@ -196,6 +196,8 @@ def main():
         else:
             vis_field = args["field"]
 
+        # vis_field = ("boxlib", vis_field)
+
         # Get updated attributes for each plt file
         ds_attributes = utils.get_attributes(ds=ds)
 
@@ -204,6 +206,8 @@ def main():
             "x": (ds_attributes["resolution"][1], ds_attributes["resolution"][2]),
             "y": (ds_attributes["resolution"][2], ds_attributes["resolution"][0]),
             "z": (ds_attributes["resolution"][0], ds_attributes["resolution"][1]),
+            # "r": (ds_attributes["resolution"][1], ds_attributes["resolution"][2]),
+            # "theta": (ds_attributes["resolution"][2], ds_attributes["resolution"][0]),
         }
 
         if args["normal"] == "y":
@@ -257,6 +261,7 @@ def main():
                 alpha=float(args["cells"][1]),
                 color=args["cells"][2],
             )
+        print(f"""Plotting {vis_field} for index {index}...""")
         slc.set_log(vis_field, args["plot_log"])
         slc.set_cmap(field=vis_field, cmap=args["cmap"])
 
@@ -340,7 +345,8 @@ def main():
             # contour must be a multiple of three arguments
             if not len(args["contour"]) % 3 == 0:
                 sys.exit(
-                    "Contour argument must be a multiple of 3! [FIELD, VALUE, COLOR]"
+                    "Contour argument must be a multiple of 3! [FIELD, VALUE, COLOR] "
+                    f"but got {args['contour']}"
                 )
             else:
                 num_contours = len(args["contour"]) // 3
