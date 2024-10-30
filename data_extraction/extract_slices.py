@@ -80,7 +80,7 @@ def main():
     # EY: The following line has a problem. args["min"] should be integer, not str
     # islice = np.linspace(args["min"], args["max"], args["num_slices"])
     # max should be (in general) # of plots: 101 is for TE_rotor on Kestrel (10/29/24)
-    islice = np.linspace(0, 101, 1)
+    islice = np.linspace(0, 1, 1)
 
     # Loop over the plt files in the data directory
     yt.enable_parallelism()
