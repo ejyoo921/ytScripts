@@ -1,7 +1,7 @@
 title = "Extract slice data"
 
-datapath = "/projects/co2snow/eyoo/PeleC/Exec/RegTests/EB-CA/TE_rotor_submodule/figures"
-outpath = "/projects/co2snow/eyoo/PeleC/Exec/RegTests/EB-CA/TE_rotor_submodule/figures"
+datapath = "../figures_sample/"
+outpath = "../figures_sample/"
 
 name = "z_slice"
 

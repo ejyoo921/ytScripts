@@ -83,7 +83,9 @@ def main():
     islice = np.linspace(0, 1, 1)
 
     # Loop over the plt files in the data directory
-    yt.enable_parallelism()
+    if not args["no_mpi"]:
+        yt.enable_parallelism()
+        
     for ds in tqdm(ts.piter(dynamic=True)):
 
         if args["field"]:
