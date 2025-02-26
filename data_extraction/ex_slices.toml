@@ -1,7 +1,7 @@
 title = "Extract slice data"
 
-datapath = "../figures_sample/"
-outpath = "../figures_sample/"
+datapath = "../../PeleC/Exec/RegTests/EB-CA/rotor_vane_cube/plots_correct_normal/"
+outpath  = "../../PeleC/Exec/RegTests/EB-CA/rotor_vane_cube/plots_correct_normal/"
 
 min = 0
 max = 1
@@ -10,8 +10,8 @@ num_slices = 1
 SI = false
 rm_eb = false
 
-field = "magvel"
+field = "Temp"
 field_list = 0
 
-normal = "z"
-location = "[0, 0, 0]"
+normal = "y"
+grid_offset = 0.0  #default value is 0.0
